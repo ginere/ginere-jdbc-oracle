@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>eu.ginere</groupId>
   <artifactId>ginere-jdbc-oracle</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Common Java utils</name>
-  <description>oracle jdbc bases Data Acces Objects</description>
+  <name>Ginere jdbc DAO for Oracle</name>
+  <description>Ginere plain jdbc DAO framework for Oracle database</description>
   <url>http://ginere.eu</url>
   <inceptionYear>2006</inceptionYear>
 
@@ -19,120 +19,140 @@
     </license>
   </licenses>
 
-<issueManagement>
-</issueManagement>
+  <issueManagement>
+  </issueManagement>
 
- <scm>
-   <connection>scm:git:https://github.com/ginere/incubator/ginere-jdbc-oracle</connection>
-   <developerConnection>scm:git:https://github.com/ginere/incubator/ginere-jdbc-oracle</developerConnection>
-   <url>https://github.com/ginere/incubator</url>
- </scm>  
+  <scm>
+	<connection>scm:git:https://ginere@github.com/ginere/ginere-jdbc-oracle</connection>
+	<developerConnection>scm:git:https://ginere@github.com/ginere/ginere-jdbc-oracle</developerConnection>
+	<url>https://github.com/ginere/ginere-jdbc-oracle</url>
+    <tag>ginere-jdbc-oracle-1.0.2</tag>
+  </scm>  
+
+  <organization>
+	<name>ginere solutions</name>
+	<url>http://ginere.eu</url>
+  </organization>
+
+  <build>
+	<defaultGoal>install</defaultGoal>
+	<plugins>
+
+	  <plugin>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>2.0.2</version>
+		<configuration>
+		  <source>1.6</source>
+		  <target>1.6</target>
+		  <encoding>UTF-8</encoding>
+		</configuration>
+	  </plugin>
+
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-resources-plugin</artifactId>
+		<version>2.4.3</version>
+	  </plugin>
+
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-gpg-plugin</artifactId>
+		<version>1.5</version>
+		<executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+	  </plugin>
+
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-release-plugin</artifactId>
+		<version>2.4.2</version>
+	  </plugin>
+
+	</plugins>
+  </build>
 
 
- <ciManagement>
- </ciManagement>
-
- <organization>
-   <name>ginere solutions</name>
-   <url>http://ginere.eu</url>
- </organization>
-
-	<build>
-		<defaultGoal>install</defaultGoal>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.4.3</version>
-			</plugin>
-		</plugins>
-	</build>
+  <distributionManagement>
+	<repository>
+	  <id>sonatype-nexus-staging</id>
+	  <name>oss.sonatype.org</name>
+	  <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+	</repository>
+	<snapshotRepository>
+	  <id>sonatype-nexus-snapshots</id>
+	  <name>oss.sonatype.org</name>
+	  <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+	</snapshotRepository>
+  </distributionManagement>
 
 
-	<distributionManagement>
-		<repository>
-			<id>artifactory</id>
-			<name>artifactory-releases</name>
-			<url>http://localhost-svn:8081/artifactory/cgps-libs-releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>artifactory</id>
-			<name>artifactory-snapshots</name>
-			<url>http://localhost-svn:8081/artifactory/cgps-libs-snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
+  <dependencies>
+	<dependency>
+	  <groupId>junit</groupId>
+	  <artifactId>junit</artifactId>
+	  <version>${junit.version}</version>
+      <scope>compile</scope>
+	</dependency>
 
+	<dependency>
+	  <groupId>commons-dbcp</groupId>
+	  <artifactId>commons-dbcp</artifactId>
+	  <version>1.4</version>
+	</dependency>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-            <scope>compile</scope>
-            <!--			<scope>test</scope> -->
-		</dependency>
-
-		<dependency>
-		  <groupId>commons-dbcp</groupId>
-		  <artifactId>commons-dbcp</artifactId>
-		  <version>1.4</version>
-		</dependency>
-
-		<!--
+	<!--
 		<dependency>
 		  <groupId>com.oracle</groupId>
 		  <artifactId>ojdbc14</artifactId>
 		  <version>10.2.0.4.0</version>
           <scope>compile</scope>
 		</dependency>
-         -->
+        -->
 
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>${commons-lang.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>${commons-io.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>${commons-codec.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.4</version>
-		</dependency>
-	</dependencies>
+	<dependency>
+	  <groupId>log4j</groupId>
+	  <artifactId>log4j</artifactId>
+	  <version>${log4j.version}</version>
+	</dependency>
+	<dependency>
+	  <groupId>commons-lang</groupId>
+	  <artifactId>commons-lang</artifactId>
+	  <version>${commons-lang.version}</version>
+	</dependency>
+	<dependency>
+	  <groupId>commons-io</groupId>
+	  <artifactId>commons-io</artifactId>
+	  <version>${commons-io.version}</version>
+	</dependency>
+	<dependency>
+	  <groupId>commons-codec</groupId>
+	  <artifactId>commons-codec</artifactId>
+	  <version>${commons-codec.version}</version>
+	</dependency>
+	<dependency>
+	  <groupId>javax.mail</groupId>
+	  <artifactId>mail</artifactId>
+	  <version>1.4.4</version>
+	</dependency>
+  </dependencies>
 
-	<properties>
-		<maven.test.skip>true</maven.test.skip>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <properties>
+	<maven.test.skip>true</maven.test.skip>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<junit.version>4.5</junit.version>
-		<log4j.version>1.2.16</log4j.version>
-		<commons-lang.version>2.6</commons-lang.version>
-		<commons-io.version>1.4</commons-io.version>
-		<commons-codec.version>1.4</commons-codec.version>
-		<!-- AVEM -->
+	<junit.version>4.5</junit.version>
+	<log4j.version>1.2.16</log4j.version>
+	<commons-lang.version>2.6</commons-lang.version>
+	<commons-io.version>1.4</commons-io.version>
+	<commons-codec.version>1.4</commons-codec.version>
+  </properties>
 
-	</properties>
 </project>
