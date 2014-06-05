@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>eu.ginere</groupId>
   <artifactId>ginere-jdbc-oracle</artifactId>
-  <version>1.0.2.1-SNAPSHOT</version>
+  <version>1.0.2.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Ginere jdbc DAO for Oracle</name>
@@ -22,11 +22,17 @@
   <issueManagement>
   </issueManagement>
 
+  <parent>
+	<groupId>org.sonatype.oss</groupId>
+	<artifactId>oss-parent</artifactId>
+	<version>9</version>
+  </parent>
+
   <scm>
 	<connection>scm:git:https://ginere@github.com/ginere/ginere-jdbc-oracle</connection>
 	<developerConnection>scm:git:https://ginere@github.com/ginere/ginere-jdbc-oracle</developerConnection>
 	<url>https://github.com/ginere/ginere-jdbc-oracle</url>
-    <tag>ginere-jdbc-oracle-1.0.2</tag>
+	<tag>HEAD</tag>
   </scm>  
 
   <organization>
@@ -77,20 +83,6 @@
 
 	</plugins>
   </build>
-
-
-  <distributionManagement>
-	<repository>
-	  <id>sonatype-nexus-staging</id>
-	  <name>oss.sonatype.org</name>
-	  <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-	</repository>
-	<snapshotRepository>
-	  <id>sonatype-nexus-snapshots</id>
-	  <name>oss.sonatype.org</name>
-	  <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-	</snapshotRepository>
-  </distributionManagement>
 
 
   <dependencies>
