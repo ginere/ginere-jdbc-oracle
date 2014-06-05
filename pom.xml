@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>eu.ginere</groupId>
   <artifactId>ginere-jdbc-oracle</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Ginere jdbc DAO for Oracle</name>
@@ -85,7 +85,7 @@
 	  <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-release-plugin</artifactId>
-<!--		<version>2.2</version> -->
+		<version>2.5</version>
 	  </plugin>
 
 	</plugins>
