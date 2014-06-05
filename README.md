@@ -17,14 +17,15 @@
 
 ginere-jdbc-oracle
 ==================
+http://ginere.eu
 
-Plain JDBC DAO Framework for Orcle
+
+Plain JDBC DAO Framework for Oracle
 
 Where can I get the latest release?
 -----------------------------------
-You can download source and binaries from our [download page][download].
 
-Alternatively you can pull it from the central Maven repositories:
+You can pull it from the central Maven repositories:
 
 ```xml
   <groupId>eu.ginere</groupId>
@@ -32,8 +33,21 @@ Alternatively you can pull it from the central Maven repositories:
   <version>1.0.2</version>
 ```
 
+Download snapshot and release artifacts from:
 
+```
+  https://oss.sonatype.org/content/groups/public
+```
+
+Download source from Github:
+
+```
+  https://github.com/ginere/ginere-jdbc-oracle
+```
 
 License
 -------
-Code is under the [Apache Licence v2][license].
+Code is under the Apache Licence v2 license.
+
+
+
