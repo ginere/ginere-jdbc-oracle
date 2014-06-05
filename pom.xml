@@ -29,8 +29,8 @@
   </parent>
 
   <scm>
-	<connection>scm:git:git@github.com:ginere/ginere-jdbc-oracle.git</connection>
-	<developerConnection>scm:git:git@github.com:ginere/ginere-jdbc-oracle.git</developerConnection>
+	<connection>scm:git:github@github.com:ginere/ginere-jdbc-oracle.git</connection>
+	<developerConnection>scm:git:github@github.com:ginere/ginere-jdbc-oracle.git</developerConnection>
 <!--
 	<connection>scm:git:https://github.com/ginere/ginere-jdbc-oracle</connection>
 	<developerConnection>scm:git:https://github.com/ginere/ginere-jdbc-oracle</developerConnection>
