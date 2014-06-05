@@ -148,6 +148,7 @@
 	<commons-lang.version>2.6</commons-lang.version>
 	<commons-io.version>1.4</commons-io.version>
 	<commons-codec.version>1.4</commons-codec.version>
+	<github.global.server>github</github.global.server>
   </properties>
 
 </project>
