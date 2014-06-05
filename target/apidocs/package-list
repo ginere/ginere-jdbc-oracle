@@ -1,0 +1,7 @@
+eu.ginere.jdbc.enumeration
+eu.ginere.jdbc.oracle
+eu.ginere.jdbc.oracle.configuration.dao
+eu.ginere.jdbc.test
+eu.ginere.service.configuration
+eu.ginere.util.exception
+eu.ginere.util.test
