@@ -29,12 +29,12 @@
   </parent>
 
   <scm>
-<!--
 	<connection>scm:git:git@github.com:ginere/ginere-jdbc-oracle.git</connection>
 	<developerConnection>scm:git:git@github.com:ginere/ginere-jdbc-oracle.git</developerConnection>
--->
+<!--
 	<connection>scm:git:https://github.com/ginere/ginere-jdbc-oracle</connection>
 	<developerConnection>scm:git:https://github.com/ginere/ginere-jdbc-oracle</developerConnection>
+-->
 
 
 	<url>https://github.com/ginere/ginere-jdbc-oracle</url>
