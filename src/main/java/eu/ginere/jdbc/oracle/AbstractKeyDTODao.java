@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 /**
  * 
- * @version $Id: CompositeFormat.java 1436768 2013-01-22 07:07:42Z ggregory $
+ *
  */
 public abstract class AbstractKeyDTODao<I extends KeyDTO> extends AbstractKeyDao<I,I>{
 

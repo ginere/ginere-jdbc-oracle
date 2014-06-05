@@ -19,9 +19,8 @@ import org.apache.log4j.Logger;
 import eu.ginere.util.test.TestInterface;
 import eu.ginere.util.test.TestResult;
 
-
 /**
- * @version $Id: CompositeFormat.java 1436768 2013-01-22 07:07:42Z ggregory $
+ * 
  */
 public class DataBase implements TestInterface{
 

@@ -1,8 +1,5 @@
 package eu.ginere.jdbc.oracle;
 
-
-
-
 /**
  * @author ventura
  *

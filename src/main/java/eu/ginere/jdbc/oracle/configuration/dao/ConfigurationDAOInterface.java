@@ -4,7 +4,7 @@ import eu.ginere.jdbc.oracle.DaoManagerException;
 import eu.ginere.util.test.TestInterface;
 
 /**
- * Intefaz de la configuraci�n de los DAO.
+ * Intefaz de la configuracion de los DAO.
  * 
  */
 public interface ConfigurationDAOInterface extends TestInterface{

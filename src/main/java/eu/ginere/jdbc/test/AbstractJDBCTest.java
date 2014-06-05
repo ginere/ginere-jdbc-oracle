@@ -13,7 +13,7 @@ public class AbstractJDBCTest extends TestCase {
 	/**
 	 * @param driverClassName
 	 * @param url
-	 *            jdbc:oracle:thin:@172.24.0.22:1521:ESTRADA1
+	 *            jdbc:oracle:thin:@...
 	 * @param user
 	 *            USER
 	 * @param password
@@ -30,7 +30,7 @@ public class AbstractJDBCTest extends TestCase {
 	/**
 	 * @param driverClassName
 	 * @param url
-	 *            jdbc:oracle:thin:@172.24.0.22:1521:ESTRADA1
+	 *            jdbc:oracle:thin:@1
 	 * @param user
 	 *            USER
 	 * @param password

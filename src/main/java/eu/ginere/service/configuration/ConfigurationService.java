@@ -12,7 +12,7 @@ import eu.ginere.util.test.TestInterface;
 import eu.ginere.util.test.TestResult;
 
 /**
- * Clase para la configuracion del servicio.
+ * Service Configuration
  *
  */
 

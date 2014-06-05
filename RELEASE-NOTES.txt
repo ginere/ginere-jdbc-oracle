@@ -1,0 +1,31 @@
+                       Ginere jdbc DAO for Oracle
+						   ginere-jdbc-oracle
+                          Version 1.0.3-SNAPSHOT
+                              Release Notes
+
+
+INTRODUCTION:
+
+This document contains the release notes for the 1.0.3 
+
+
+NEW FEATURES
+==============
+
+o LANG-989:  
+
+FIXED BUGS
+============
+
+o LANG-992:  
+
+                        Release Notes for version 3.3.1
+
+
+
+http://ginere.eu/opensource/ginere-jdbc-oracle
+https://github.com/ginere/ginere-jdbc-oracle
+
+Have fun!
+ Thanks to the Apache Commons Lang team
+

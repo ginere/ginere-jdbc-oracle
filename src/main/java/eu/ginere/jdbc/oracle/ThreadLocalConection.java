@@ -219,7 +219,10 @@ public class ThreadLocalConection {
 					time = System.currentTimeMillis();
 				}
 				Connection ret = dataSource.getConnection();
-				ret.setAutoCommit(true);
+
+				// Some probles in XA drivers
+				// ret.setAutoCommit(true);
+
 				if (log.isInfoEnabled()) {
 					log.info("Connection obtained in:"
 							 + (System.currentTimeMillis() - time) + " mill");

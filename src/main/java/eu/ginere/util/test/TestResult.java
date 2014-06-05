@@ -5,7 +5,7 @@ import java.util.Vector;
 import eu.ginere.util.exception.ExceptionUtils;
 
 /**
- * Clase para los test.
+ * Cascade tree system testing.
  * 
  * @author ventura
  *
@@ -17,6 +17,18 @@ final public class TestResult {
 	private String errorMessage;
 	private Vector<TestResult> childs=new Vector<TestResult>();
 	private Throwable exception=null;;
+
+	public static TestResult tesy(String systemName,TestInterface system){
+		TestResult ret=new TestResult(systemName);
+
+		if (system == null){
+			ret.addError("The system to tes:"+systemName+" is null.");
+		} else {
+			ret.add(system.test());
+		}
+
+		return ret;
+	}
 	
 	public TestResult(String nombreDelSistema){
 		this.nombre=nombreDelSistema;
