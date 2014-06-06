@@ -31,7 +31,15 @@ public class DataBase implements TestInterface{
 	private DataSource dataSource;
 
 	private final String name;
-	
+
+	public DataBase(String jndiPath,String jndiName) throws NamingException{
+		this.name=jndiName;
+		log.info("Getting the datasource from the jndi ressource:"+jndiName+"'");
+		InitialContext initContext = new InitialContext();
+		this.dataSource = (DataSource) initContext.lookup(jndiPath+jndiName);		
+		log.info("Database sucesfully initialized from jndi ressource jndi:"+jndiName+"'");		
+	}
+
 	public DataBase(String jndiName) throws NamingException{
 		this.name=jndiName;
 		log.info("Getting the datasource from the jndi ressource:"+jndiName+"'");
@@ -55,8 +63,6 @@ public class DataBase implements TestInterface{
 	}
 	
 	/**
-	 * Cambia la datasource.
-	 * 
 	 * @param jndiName
 	 * @throws NamingException
 	 */
@@ -67,7 +73,14 @@ public class DataBase implements TestInterface{
 //		this.dataSource = (DataSource) initContext.lookup("java:comp/env/"+jndiName);		
 //		log.info("Se ha actualizado satisfactoriamente la DataSource del recurso jndi:"+jndiName+"'");
 	}
-	
+
+	/**
+	 * @param jndiName
+	 * @throws NamingException
+	 */
+	public static void initDatasource(String jndiPath,String jndiName) throws NamingException {
+		DEFAULT_DATABASE=new DataBase(jndiPath,jndiName);
+	}
 	public static void initDatasource(String name,DataSource datasource) throws NamingException {
 		DEFAULT_DATABASE=new DataBase(name,datasource);
 	}

@@ -45,5 +45,91 @@ under the License.
     <version>1.1.0</version>
   </skin>
 
+  <publishDate position="bottom" format="yyyy-MM-dd" />
+  <version position="bottom" />
+
+ <custom>
+   <reflowSkin>
+	 <theme>default</theme>
+      <highlightJs>true</highlightJs>
+      <brand>
+        <name>eu.ginere-jdbc-oracle</name>
+        <href>https://github.com/ginere/ginere-jdbc-oracle</href>
+      </brand>
+      <slogan>Plain JDBC DAO Framework for Oracle.</slogan>
+      <titleTemplate>%2$s | %1$s</titleTemplate>
+      <toc>top</toc>
+      <topNav>Download|reports</topNav>
+      <bottomNav>
+        <column>Main|Download</column>
+        <column>Documentation</column>
+        <column>reports|modules</column>
+      </bottomNav>
+      <bottomDescription>
+        Ginere Solutions
+      </bottomDescription>
+      <pages>
+        <index project="project-id">
+          <shortTitle>Welcome</shortTitle>
+          <breadcrumbs>false</breadcrumbs>
+          <toc>false</toc>
+          <sections>
+            <carousel />
+            <body />
+            <sidebar />
+            <thumbs>2</thumbs>
+            <columns>3</columns>
+          </sections>
+        </index>
+        <developer-info>
+          <toc>sidebar</toc>
+        </developer-info>
+      </pages>
+    </reflowSkin>
+  </custom>
+
+
+  <body>  
+    <links>
+      <item name="Ginere" href="http://ginere.eu" />
+      <item name="GitHub project" href="https://github.com/ginere/ginere-jdbc-oracle" />
+    </links>
+
+    <breadcrumbs>
+      <item name="Reflow" href="/pepe" />
+    </breadcrumbs>
+  
+    <menu name="Main" inherit="top">
+      <item name="Home" href="./" />
+      <item name="GitHub project" href="http://github.com/andriusvelykis/reflow-maven-skin/" />
+      <item name="Blog" href="http://andrius.velykis.lt/tag/reflow-maven-skin/" />
+      <item name="Release notes" href="release-notes.html" />
+    </menu>
+    <menu name="Download" inherit="top">
+      <item name="Download" href="skin/index.html#Usage" />
+      <item name="License" href="license.html" />
+    </menu>
+    <menu name="Documentation" inherit="bottom">
+      <item name="Usage" href="skin/" />
+      <item name="Configuration" href="skin/config.html" />
+      <item name="Themes" href="skin/themes/" />
+      <item name="Layouts" href="skin/layouts.html" />
+      <item name="Components" href="skin/components.html" />
+      <item name="Other" href="skin/misc.html" />
+      <item name="Multi-module site" href="skin/multi-module.html" />
+      <item name="Local resources" href="skin/resources.html" />
+    </menu>
+    <menu name="Tools" inherit="bottom">
+      <item name="Reflow Velocity tools" href="reflow-velocity-tools/" />
+      <item name="Tools Javadoc" href="reflow-velocity-tools/apidocs/" />
+    </menu>
+    <menu name="Contribute" inherit="bottom">
+      <item name="Contribute" href="contribute.html" />
+      <item name="Issues" href="http://github.com/andriusvelykis/reflow-maven-skin/issues/" />
+      <item name="Fork on GitHub" href="http://github.com/andriusvelykis/reflow-maven-skin/" />
+      <item name="Donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;amp;hosted_button_id=QWKNRFZH52828" />
+    </menu>
+    <menu name="Maven documentation" ref="reports" inherit="bottom"/>
+  </body>
 
 </project>
