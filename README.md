@@ -22,6 +22,12 @@ http://ginere.eu
 
 Plain JDBC DAO Framework for Oracle
 
+Availables sources and releases:
+
+```
+	https://oss.sonatype.org/content/groups/public/eu/ginere/ginere-jdbc-oracle/
+```
+
 Where can I get the latest release?
 -----------------------------------
 
@@ -33,7 +39,7 @@ You can pull it from the central Maven repositories:
   <version>1.0.2</version>
 ```
 
-Download snapshot and release artifacts from:
+Download snapshots and release artifacts from:
 
 ```
   https://oss.sonatype.org/content/groups/public
