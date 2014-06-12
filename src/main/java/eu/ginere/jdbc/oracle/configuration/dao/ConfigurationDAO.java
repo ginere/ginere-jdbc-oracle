@@ -21,7 +21,7 @@ public class ConfigurationDAO extends AbstractDAO implements ConfigurationDAOInt
 	public static final ConfigurationDAO DAO=new ConfigurationDAO();
 
 	
-	public static final String GET_PROPERTY="select VALUE from "+TABLE_NAME+" where NAME=?1 and rownum <=1";
+	public static final String GET_PROPERTY="select VALUE from "+TABLE_NAME+" where NAME=? and rownum <=1";
 	
 	public String getProperty(String propertyName) throws DaoManagerException {
 		try {
@@ -72,7 +72,7 @@ public class ConfigurationDAO extends AbstractDAO implements ConfigurationDAOInt
 		}
 	}
 
-	public static final String INSERT_PROPERTY="insert into "+TABLE_NAME+" (NAME,VALUE,DESCRIPTION) VALUES (?1,?2,?3)";
+	public static final String INSERT_PROPERTY="insert into "+TABLE_NAME+" (NAME,VALUE,DESCRIPTION) VALUES (?,?,?)";
 
 	public void insertProperty(String propertyName,
 							   String defaultValue,
@@ -104,7 +104,7 @@ public class ConfigurationDAO extends AbstractDAO implements ConfigurationDAOInt
 		}
 	}
 
-	public static final String DELETE_PROPERTY="delete from "+TABLE_NAME+" where NAME=?1";
+	public static final String DELETE_PROPERTY="delete from "+TABLE_NAME+" where NAME=?";
 
 	public void delete(String propertyName) throws DaoManagerException {
 		try {
@@ -129,7 +129,7 @@ public class ConfigurationDAO extends AbstractDAO implements ConfigurationDAOInt
 		}
 	}
 
-	public static final String UPDATE_VALUE="update "+TABLE_NAME+" set VALUE=?1 where NAME=?2";
+	public static final String UPDATE_VALUE="update "+TABLE_NAME+" set VALUE=? where NAME=?";
 
 	public void setValue(String propertyName, String value) throws DaoManagerException {
 		try {
@@ -157,7 +157,7 @@ public class ConfigurationDAO extends AbstractDAO implements ConfigurationDAOInt
 	}
 
 
-	public static final String UPDATE_DESCRIPCION="update "+TABLE_NAME+" set DESCRIPTION=?1 where NAME=?2";
+	public static final String UPDATE_DESCRIPCION="update "+TABLE_NAME+" set DESCRIPTION=? where NAME=?";
 
 	public void updateDescripcion(String propertyName, String descripcion) throws DaoManagerException {
 		try {

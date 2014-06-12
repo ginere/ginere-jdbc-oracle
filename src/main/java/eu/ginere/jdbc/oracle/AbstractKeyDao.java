@@ -48,18 +48,12 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 
 
 		this.GET_BY_ID_QUERY="SELECT "+COLUMNS_MINUS_COLUMN_NAME+
-			" from "+tableName + " WHERE "+keyColumnName+"=?1 and ROWNUM<=1";
+			" from "+tableName + " WHERE "+keyColumnName+"=? and ROWNUM<=1";
 		this.GET_ALL_QUERY="select " + COLUMNS_INCLUDING_COLUMN_NAME+ " from " + tableName+ " ";
-		this.GET_ALL_QUERY_LIMIT="select " + COLUMNS_INCLUDING_COLUMN_NAME+ " from " + tableName+ "  WHERE ROWNUM <= ?1";
+		this.GET_ALL_QUERY_LIMIT="select " + COLUMNS_INCLUDING_COLUMN_NAME+ " from " + tableName+ "  WHERE ROWNUM <= ?";
 		this.GET_ALL_IDS="SELECT "+keyColumnName+" from "+tableName;
 		this.COUNT_QUERY="select count(*) from " + tableName;
-		this.DELETE_QUERY="DELETE from " + tableName + " where "+keyColumnName+"=?1";
-
-
-		//		this.INSERT_QUERY = "insert into "
-		//			+ TABLE_NAME
-		//			+ " ("+COLUMNS+") VALUES "
-		//			//			+ " (?1,?2,?3,?4,,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15)";
+		this.DELETE_QUERY="DELETE from " + tableName + " where "+keyColumnName+"=?";
 		
 		StringBuilder insertBuilder=new StringBuilder();
 		insertBuilder.append("INSERT INTO ");
@@ -69,30 +63,15 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 		insertBuilder.append(") VALUES (");
 
 		// First the key column
-		insertBuilder.append("?1");
+		insertBuilder.append("?");
 		
 		// then the rest of the column
 		for (int i=0;i<columnsArrayMinusKeyColumnName.length;i++){
 			insertBuilder.append(",?");
-			insertBuilder.append(i+2);
-			insertBuilder.append("");
 		}
 		insertBuilder.append(")");
 		
 		this.INSERT_QUERY=insertBuilder.toString();
-
-//		"UPDATE "
-//		+ TABLE_NAME
-//		+ " set ID_DOC_FISICO=?1,"+
-//		" FECHA_ENTRADA=?2,"+
-//		" ESTADO=?3,"+
-//		" ID_TIPO_DOCUMENTO=?4,"+
-//		" ID_EXPEDIENTE=?5,"+
-//		" ULTIMO_TRATAMIENTO=?6,"+
-//		" FECHA_FINALIZACION=?7,"+
-//		" FALSO_POSITIVO=?8,"+
-//		" TIPO_RECURSO=?9"+
-//		" WHERE ID=?10";
 
 		StringBuilder updateBuilder=new StringBuilder();
 		updateBuilder.append("UPDATE ");
@@ -103,18 +82,15 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 			if (i<columnsArrayMinusKeyColumnName.length-1){
 				updateBuilder.append(columnsArrayMinusKeyColumnName[i]);
 				updateBuilder.append("=?");
-				updateBuilder.append(i+2);
 				updateBuilder.append(",");
 			} else {
 				updateBuilder.append(columnsArrayMinusKeyColumnName[i]);
 				updateBuilder.append("=?");
-				updateBuilder.append(i+2);
 			}
 		}
 		updateBuilder.append(" WHERE ");
 		updateBuilder.append(keyColumnName);
-		updateBuilder.append("=?1");
-		//		updateBuilder.append(columnsArray.length+1);
+		updateBuilder.append("=?");
 				
 		this.UPDATE_QUERY=updateBuilder.toString();
 				
