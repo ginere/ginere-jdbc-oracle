@@ -57,7 +57,7 @@ public class ExceptionUtils {
 			}
 	
 			if (exception.getCause() != null) {
-				buffer.append("Causado por: ");
+				buffer.append("Parent exception: ");
 				ret=formatException(exception.getCause(), buffer);
 			} else {
 				ret=buffer;

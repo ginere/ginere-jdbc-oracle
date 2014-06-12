@@ -19,13 +19,29 @@ FIXED BUGS
 
 o LANG-992:  
 
-                        Release Notes for version 3.3.1
+                        Release Notes for version 1.0.2
+
+* Initial release
+
+
+                        Release Notes for version 1.0.3
+FIXED BUGS
+============
+o 2:	Include a testing function that will also test if the service is null. #2
+o 1:	Weblogic XA driver #1
+o 4:	Causado por: java.sql.SQLSyntaxErrorException: "ORA-00933: SQL command not properly ended
 
 
 
+
+
+
+
+https://github.com/ginere/ginere-jdbc-oracle/issues
 http://ginere.eu/opensource/ginere-jdbc-oracle
 https://github.com/ginere/ginere-jdbc-oracle
 
 Have fun!
  Thanks to the Apache Commons Lang team
+
 
