@@ -18,7 +18,7 @@ final public class TestResult {
 	private Vector<TestResult> childs=new Vector<TestResult>();
 	private Throwable exception=null;;
 
-	public static TestResult tesy(String systemName,TestInterface system){
+	public static TestResult test(String systemName,TestInterface system){
 		TestResult ret=new TestResult(systemName);
 
 		if (system == null){
