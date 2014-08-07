@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import eu.ginere.base.util.dao.DaoManagerException;
+
 /**
  * 
  *

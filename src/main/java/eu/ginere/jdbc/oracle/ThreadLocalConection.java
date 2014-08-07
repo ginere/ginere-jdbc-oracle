@@ -10,6 +10,8 @@ import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
 
+import eu.ginere.base.util.dao.DaoManagerException;
+
 /**
  * @author ventura
  */

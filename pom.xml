@@ -143,6 +143,13 @@
 			<artifactId>commons-codec</artifactId>
 			<version>${commons-codec.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>eu.ginere</groupId>
+			<artifactId>ginere-base</artifactId>
+			<version>${ginere-base.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<properties>
@@ -156,6 +163,9 @@
 		<commons-io.version>1.4</commons-io.version>
 		<commons-codec.version>1.4</commons-codec.version>
 		<github.global.server>github</github.global.server>
+
+		<!-- GINERE -->
+		<ginere-base.version>1.0.2-SNAPSHOT</ginere-base.version>
 
 	</properties>
 
