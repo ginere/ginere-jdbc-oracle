@@ -11,7 +11,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.log4j.Logger;
 
-import eu.ginere.util.test.TestResult;
+import eu.ginere.base.util.dao.DaoManagerException;
+import eu.ginere.base.util.test.TestResult;
 
 
 public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{

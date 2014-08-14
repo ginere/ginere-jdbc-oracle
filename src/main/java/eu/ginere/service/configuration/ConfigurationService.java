@@ -6,10 +6,10 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-import eu.ginere.jdbc.oracle.DaoManagerException;
+import eu.ginere.base.util.dao.DaoManagerException;
+import eu.ginere.base.util.test.TestInterface;
+import eu.ginere.base.util.test.TestResult;
 import eu.ginere.jdbc.oracle.configuration.dao.ConfigurationDAOInterface;
-import eu.ginere.util.test.TestInterface;
-import eu.ginere.util.test.TestResult;
 
 /**
  * Service Configuration

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
+import eu.ginere.base.util.dao.DaoManagerException;
 import eu.ginere.jdbc.oracle.AbstractDAO;
-import eu.ginere.jdbc.oracle.DaoManagerException;
 
 
 public class ConfigurationDAO extends AbstractDAO implements ConfigurationDAOInterface{

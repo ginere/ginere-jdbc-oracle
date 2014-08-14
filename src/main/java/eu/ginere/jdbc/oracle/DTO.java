@@ -6,6 +6,8 @@ import java.util.Date;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
+import eu.ginere.base.util.dao.DaoManagerException;
+
 
 /**
  * @author ventura

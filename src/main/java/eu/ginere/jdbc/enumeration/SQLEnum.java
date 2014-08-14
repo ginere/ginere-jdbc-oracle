@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import eu.ginere.jdbc.oracle.DaoManagerException;
+import eu.ginere.base.util.dao.DaoManagerException;
 
 
 public abstract class SQLEnum {

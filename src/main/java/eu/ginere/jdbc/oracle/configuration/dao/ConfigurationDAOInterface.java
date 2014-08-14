@@ -1,7 +1,7 @@
 package eu.ginere.jdbc.oracle.configuration.dao;
 
-import eu.ginere.jdbc.oracle.DaoManagerException;
-import eu.ginere.util.test.TestInterface;
+import eu.ginere.base.util.dao.DaoManagerException;
+import eu.ginere.base.util.test.TestInterface;
 
 /**
  * Intefaz de la configuracion de los DAO.

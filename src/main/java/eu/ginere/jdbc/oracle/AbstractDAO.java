@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.List;
 
-import eu.ginere.util.test.TestInterface;
-import eu.ginere.util.test.TestResult;
+import eu.ginere.base.util.dao.DaoManagerException;
+import eu.ginere.base.util.test.TestInterface;
+import eu.ginere.base.util.test.TestResult;
 
 
 public abstract class AbstractDAO implements TestInterface{

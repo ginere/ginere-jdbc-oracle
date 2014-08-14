@@ -16,8 +16,9 @@ import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
 
-import eu.ginere.util.test.TestInterface;
-import eu.ginere.util.test.TestResult;
+import eu.ginere.base.util.dao.DaoManagerException;
+import eu.ginere.base.util.test.TestInterface;
+import eu.ginere.base.util.test.TestResult;
 
 /**
  * 
