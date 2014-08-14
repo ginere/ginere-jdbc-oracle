@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>eu.ginere</groupId>
 	<artifactId>ginere-jdbc-oracle</artifactId>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Ginere jdbc DAO for Oracle</name>
@@ -144,6 +143,13 @@
 			<artifactId>commons-codec</artifactId>
 			<version>${commons-codec.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>eu.ginere</groupId>
+			<artifactId>ginere-base</artifactId>
+			<version>${ginere-base.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<properties>
@@ -157,6 +163,9 @@
 		<commons-io.version>1.4</commons-io.version>
 		<commons-codec.version>1.4</commons-codec.version>
 		<github.global.server>github</github.global.server>
+
+		<!-- GINERE -->
+		<ginere-base.version>1.0.2-SNAPSHOT</ginere-base.version>
 
 	</properties>
 
