@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>eu.ginere</groupId>
 	<artifactId>ginere-jdbc-oracle</artifactId>
-	<version>1.0.4-SNAPSHOT</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Ginere jdbc DAO for Oracle</name>
@@ -165,7 +165,7 @@
 		<github.global.server>github</github.global.server>
 
 		<!-- GINERE -->
-		<ginere-base.version>1.0.2-SNAPSHOT</ginere-base.version>
+		<ginere-base.version>1.2.0</ginere-base.version>
 
 	</properties>
 
