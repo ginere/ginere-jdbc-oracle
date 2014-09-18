@@ -109,21 +109,25 @@
 		</plugins>
 	</build>
 
-
 	<dependencies>
-		<!-- TESTs -->
+
+		<!-- TESTs This jar is not in public repositories
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc14</artifactId>
 			<version>10.2.0.4.0</version>
 			<scope>test</scope>
 		</dependency>
+        -->
 
+		<!-- There is a helper class for test purposes included into the distribution that uses junit
+             the scope is not test
+        -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
-			<scope>test</scope>
+            <scope>compile</scope>
 		</dependency>
 
 		<dependency>
