@@ -44,7 +44,7 @@
 		<developerConnection>scm:git:https://github.com/ginere/ginere-jdbc-oracle</developerConnection>
 
 		<url>https://github.com/ginere/ginere-jdbc-oracle</url>
-		<tag>ginere-jdbc-oracle-1.0.2</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<organization>
