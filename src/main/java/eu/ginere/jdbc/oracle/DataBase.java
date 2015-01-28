@@ -249,6 +249,70 @@ public class DataBase implements TestInterface{
 	
 
 
+	public static Date getDate(PreparedStatement pstm,
+								   String query) throws DaoManagerException {
+		long time = 0;
+		if (log.isDebugEnabled()) {
+			time = System.currentTimeMillis();
+		}
+		
+		try {
+			ResultSet rset = executeQuery(pstm,query);
+			try {
+				if(rset.next()) {
+					return rset.getTimestamp(1);
+				} else {
+					throw new DaoManagerException("Not result for query:'"+query+"'");
+				}
+			} catch (SQLException e) {
+				throw new DaoManagerException("While executing query:'" + query+ "'", e);
+			}finally{
+				close(rset);
+			}
+		} finally {
+			if (log.isDebugEnabled()) {
+				log.debug("query:'" + query + "' executed in:"
+						+ (System.currentTimeMillis() - time) + " mill");
+			}
+		}
+	}
+	
+	
+	
+
+	public static Date getDate(PreparedStatement pstm,
+								   String query,
+								   Date defaultValue) throws DaoManagerException {
+		long time = 0;
+		if (log.isDebugEnabled()) {
+			time = System.currentTimeMillis();
+		}
+		
+		try {
+			ResultSet rset = executeQuery(pstm,query);
+			try {
+				if(rset.next()) {
+					return rset.getTimestamp(1);
+				} else {
+					return defaultValue;
+				}
+			} catch (SQLException e) {
+				throw new DaoManagerException("While executing query:'" + query+ "'", e);
+			}finally {
+				close(rset);
+			}
+		} finally {
+			if (log.isDebugEnabled()) {
+				log.debug("query:'" + query + "' executed in:"
+						+ (System.currentTimeMillis() - time) + " mill");
+			}
+		}
+	}
+	
+	
+	
+
+
 	public static boolean hasResult(PreparedStatement pstm,
 								   String query) throws DaoManagerException {
 		long time = 0;

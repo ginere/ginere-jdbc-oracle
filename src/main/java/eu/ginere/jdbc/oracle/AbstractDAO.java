@@ -48,6 +48,10 @@ public abstract class AbstractDAO implements TestInterface{
 		return DataBase.getString(pstm,query);
 	}
 
+	protected Date getDate(PreparedStatement pstm, String query) throws DaoManagerException{
+		return DataBase.getDate(pstm,query);
+	}
+
 	protected String getString(PreparedStatement pstm, String query,String defaultValue) throws DaoManagerException{
 		return DataBase.getString(pstm,query,defaultValue);
 	}

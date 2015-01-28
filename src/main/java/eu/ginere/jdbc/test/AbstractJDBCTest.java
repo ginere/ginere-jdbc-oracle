@@ -21,11 +21,10 @@ public class AbstractJDBCTest extends TestCase {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static DataSource createOracleDataSource(String driverClassName,
-													String url,
+	public static DataSource createOracleDataSource(String url,
 													String username, 
 													String password) throws SQLException {
-		return createOracleDataSource("oracle.jdbc.driver.OracleDriver",url,username,password);
+		return createDataSource("oracle.jdbc.driver.OracleDriver",url,username,password);
 	}
 	/**
 	 * @param driverClassName

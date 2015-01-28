@@ -109,13 +109,25 @@
 		</plugins>
 	</build>
 
-
 	<dependencies>
+
+		<!-- TESTs This jar is not in public repositories
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.4.0</version>
+			<scope>test</scope>
+		</dependency>
+        -->
+
+		<!-- There is a helper class for test purposes included into the distribution that uses junit
+             the scope is not test
+        -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
-			<scope>compile</scope>
+            <scope>compile</scope>
 		</dependency>
 
 		<dependency>
@@ -157,7 +169,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<junit.version>4.5</junit.version>
+		<junit.version>4.8.2</junit.version>
 		<log4j.version>1.2.16</log4j.version>
 		<commons-lang.version>2.6</commons-lang.version>
 		<commons-io.version>1.4</commons-io.version>

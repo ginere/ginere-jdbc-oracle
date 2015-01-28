@@ -232,7 +232,7 @@ public class ThreadLocalConection {
 				
 				return ret;
 			} catch (SQLException e) {
-				throw new DaoManagerException("Obteniendo la conexion", e);
+				throw new DaoManagerException("While getting the connection", e);
 			}
 		}
 	}
