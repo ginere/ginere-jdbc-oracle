@@ -19,7 +19,7 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 
 	protected static final Logger log = Logger.getLogger(AbstractKeyDao.class);
 	
-	public final String TABLE_NAME;
+//	public final String TABLE_NAME;
 	public final String KEY_COLUM_NAME;
 
 	protected final String GET_BY_ID_QUERY;
@@ -41,7 +41,9 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 	protected AbstractKeyDao(String tableName,
 							 String keyColumnName,
 							 String columnsArrayMinusKeyColumnName[]){
-		this.TABLE_NAME=tableName;
+		super(tableName);
+		
+//		this.TABLE_NAME=tableName;
 		this.KEY_COLUM_NAME=keyColumnName;
 		
 		this.COLUMNS_MINUS_COLUMN_NAME=StringUtils.join(columnsArrayMinusKeyColumnName,',');
@@ -98,6 +100,42 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 
 	}
 
+	public T get(String id,T defaultValue) throws DaoManagerException {
+		
+		Connection connection = getConnection();
+		try {
+			return get(connection,id,defaultValue);
+		} finally {
+			closeConnection(connection);
+		}
+	}
+
+	public T get(Connection connection,String id,T defaultValue) throws DaoManagerException {
+		String query=GET_BY_ID_QUERY;
+		try {
+			PreparedStatement pstm = getPrepareStatement(connection, query);
+			try {
+				setString(pstm, 1, id, query);
+				
+				ResultSet rset = executeQuery(pstm, query);
+				try {
+					if (rset.next()) {
+						return  createFromResultSet(id,rset,query);
+					} else {
+						return defaultValue;
+					}
+				}finally{
+					close(rset);
+				}
+			}finally{
+				close(pstm);
+			}
+		} catch (SQLException e) {
+			String error = "id:'" + id + "'";
+
+			throw new DaoManagerException(error, e);
+		}
+	}
 
 	public T get(String id) throws DaoManagerException {
 		
@@ -119,7 +157,7 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 				ResultSet rset = executeQuery(pstm, query);
 				try {
 					if (rset.next()) {
-						return  createFromResultSet(id,rset);
+						return  createFromResultSet(id,rset,query);
 					} else {
 						throw new DaoManagerException("id:'"+id+"'");
 					}
@@ -183,7 +221,7 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 					List<I> list= new ArrayList<I>(rset.getFetchSize());
 				
 					while (rset.next()){
-						T t=createFromResultSet(rset);
+						T t=createFromResultSet(rset,query);
 						list.add(t);
 					}
 					return list;
@@ -219,7 +257,7 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 					List<I> list= new ArrayList<I>(rset.getFetchSize());
 					
 					while (rset.next()){
-						T t=createFromResultSet(rset);
+						T t=createFromResultSet(rset,query);
 						list.add(t);
 					}
 					return list;
@@ -397,7 +435,7 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 					List<I> list= new ArrayList<I>(rset.getFetchSize());
 					
 					while (rset.next()){
-						T t=createFromResultSet(rset);
+						T t=createFromResultSet(rset,query);
 						list.add(t);
 					}
 					return list;
@@ -418,6 +456,75 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 		}
 	}
 
+	public List<I> getByConditions (String conditions,Object arg1) throws DaoManagerException{
+		Connection connection=getConnection();
+		String query=GET_ALL_QUERY+conditions;
+
+		try{
+			PreparedStatement pstm = getPrepareStatement(connection,query);
+			set(pstm, 1, arg1, query);
+			try {
+				ResultSet rset = executeQuery(pstm,query);
+				try {
+					List<I> list= new ArrayList<I>(rset.getFetchSize());
+					
+					while (rset.next()){
+						T t=createFromResultSet(rset,query);
+						list.add(t);
+					}
+					return list;
+				}catch (SQLException e){
+					String error="Query" + query;
+					throw new DaoManagerException(error,e);
+				}finally{
+					close(rset);
+				}
+			}finally{
+				close(pstm);
+			}					
+		}catch (DaoManagerException e) {
+			String error="Query" + query;
+			throw new DaoManagerException(error, e);
+		}finally{
+			closeConnection(connection);
+		}
+	}
+	
+	public List<I> getByConditions (String conditions,Object arg1,Object arg2) throws DaoManagerException{
+		Connection connection=getConnection();
+		String query=GET_ALL_QUERY+conditions;
+
+		try{
+			PreparedStatement pstm = getPrepareStatement(connection,query);
+			set(pstm, 1, arg1, query);
+			set(pstm, 2, arg2, query);
+			
+			try {
+				ResultSet rset = executeQuery(pstm,query);
+				try {
+					List<I> list= new ArrayList<I>(rset.getFetchSize());
+					
+					while (rset.next()){
+						T t=createFromResultSet(rset,query);
+						list.add(t);
+					}
+					return list;
+				}catch (SQLException e){
+					String error="Query" + query;
+					throw new DaoManagerException(error,e);
+				}finally{
+					close(rset);
+				}
+			}finally{
+				close(pstm);
+			}					
+		}catch (DaoManagerException e) {
+			String error="Query" + query;
+			throw new DaoManagerException(error, e);
+		}finally{
+			closeConnection(connection);
+		}
+	}
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
@@ -426,15 +533,15 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 	/**
 	 * Tiene que leer todas las columnas menos la columna de la primary key
 	 */
-	protected abstract T createFromResultSet(String id,ResultSet rset) throws SQLException, DaoManagerException;
+	protected abstract T createFromResultSet(String id,ResultSet rset,String query) throws SQLException, DaoManagerException;
 
 	/**
 	 * Tiene que leer todas las columnas del objeto
 	 */
-	protected T createFromResultSet(ResultSet rset) throws SQLException, DaoManagerException{
+	protected T createFromResultSet(ResultSet rset,String query) throws SQLException, DaoManagerException{
 		String id=getString(rset,KEY_COLUM_NAME,TABLE_NAME);
 		
-		return createFromResultSet(id, rset);
+		return createFromResultSet(id, rset,query);
 	}
 	
 	
@@ -476,7 +583,7 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 		ResultSet rset = executeQuery(pstm,query);
 		try {
 			while (rset.next()){
-				T t=createFromResultSet(rset);
+				T t=createFromResultSet(rset,query);
 				if (!i.access(t)){
 					return ;
 				}
@@ -504,13 +611,13 @@ public abstract class AbstractKeyDao<I,T extends I> extends AbstractDAO{
 	protected abstract void setUpdateStatement(PreparedStatement pstmInsert,I obj,String query) throws DaoManagerException;
 	//	protected abstract void setUpdateStatement(PreparedStatement pstmInsert,T obj,String query) throws DaoManagerException;
 
-	protected String getString(ResultSet rset,String columnName,String tableName) throws DaoManagerException{
-		try {
-			return rset.getString(columnName);
-		}catch(SQLException e){
-			throw new DaoManagerException("columnName:"+columnName+" tableName:"+tableName,e);
-		}
-	}
+//	protected String getString(ResultSet rset,String columnName,String tableName) throws DaoManagerException{
+//		try {
+//			return rset.getString(columnName);
+//		}catch(SQLException e){
+//			throw new DaoManagerException("columnName:"+columnName+" tableName:"+tableName,e);
+//		}
+//	}
 	
 	@Override
 	public TestResult test() {

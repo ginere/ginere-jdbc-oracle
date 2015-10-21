@@ -1,10 +1,9 @@
 package eu.ginere.jdbc.oracle;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import eu.ginere.base.util.dao.DaoManagerException;
+import eu.ginere.base.util.dao.jdbc.KeyDTO;
 
 /**
  * 
@@ -20,10 +19,12 @@ public abstract class AbstractKeyDTODao<I extends KeyDTO> extends AbstractKeyDao
 	}
 	
 
-	/**
-	 * Tiene que leer todas las columnas menos la columna de la primary key
-	 */
-	protected abstract I createFromResultSet(String id,ResultSet rset) throws SQLException, DaoManagerException;
+//	/**
+//	 * Tiene que leer todas las columnas menos la columna de la primary key
+//	 */
+//	protected abstract I createFromResultSet(String id,
+//											 ResultSet rset,
+//											 String query) throws SQLException, DaoManagerException;
 
 	
 	/**
@@ -33,7 +34,7 @@ public abstract class AbstractKeyDTODao<I extends KeyDTO> extends AbstractKeyDao
 	 * @param query
 	 * @throws DaoManagerException
 	 */
-	protected abstract int updateStament(PreparedStatement pstmInsert,I obj,String query,int argumentIndex) throws DaoManagerException;
+	protected abstract int fillUpdateStatement(PreparedStatement pstmInsert,I obj,int argumentIndex,String query) throws DaoManagerException;
 
 	protected I insert(I obj,String secuenceName) throws DaoManagerException {
 		String id=super.insertFromSecuence(obj, secuenceName);
@@ -52,7 +53,7 @@ public abstract class AbstractKeyDTODao<I extends KeyDTO> extends AbstractKeyDao
 
 		set(pstmInsert,i++, id, query);
 
-		updateStament(pstmInsert,obj,query,i);
+		fillUpdateStatement(pstmInsert,obj,i,query);
 	}
 	
 	@Override
@@ -61,7 +62,7 @@ public abstract class AbstractKeyDTODao<I extends KeyDTO> extends AbstractKeyDao
 									  String query) throws DaoManagerException {
 		int i=1;
 
-		i=updateStament(pstmInsert,obj,query,i);		
+		i=fillUpdateStatement(pstmInsert,obj,i,query);		
 		
 		set(pstmInsert,i++,obj.getKey(),query);
 	}

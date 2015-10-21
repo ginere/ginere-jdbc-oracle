@@ -20,6 +20,9 @@ public class ConfigurationDAO extends AbstractDAO implements ConfigurationDAOInt
 	
 	public static final ConfigurationDAO DAO=new ConfigurationDAO();
 
+	private ConfigurationDAO(){
+		super(TABLE_NAME);
+	}
 	
 	public static final String GET_PROPERTY="select VALUE from "+TABLE_NAME+" where NAME=? and rownum <=1";
 	

@@ -177,7 +177,7 @@
 		<github.global.server>github</github.global.server>
 
 		<!-- GINERE -->
-		<ginere-base.version>1.2.0</ginere-base.version>
+		<ginere-base.version>1.2.2</ginere-base.version>
 
 	</properties>
 

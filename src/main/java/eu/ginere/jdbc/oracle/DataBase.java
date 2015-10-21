@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 
 import eu.ginere.base.util.dao.DaoManagerException;
+import eu.ginere.base.util.enumeration.SQLEnum;
 import eu.ginere.base.util.test.TestInterface;
 import eu.ginere.base.util.test.TestResult;
 
@@ -220,7 +221,8 @@ public class DataBase implements TestInterface{
 	
 
 	public static String getString(PreparedStatement pstm,
-								   String query,String defaultValue) throws DaoManagerException {
+								   String defaultValue,
+								   String query) throws DaoManagerException {
 		long time = 0;
 		if (log.isDebugEnabled()) {
 			time = System.currentTimeMillis();
@@ -605,7 +607,18 @@ public class DataBase implements TestInterface{
 			throw new DaoManagerException("Query:'"+query+"' Value:'" + value	+ "'", e);
 		}
 	}
-
+	protected static void setSQLEnum(PreparedStatement pstm,int poss,SQLEnum value,String query) throws DaoManagerException {
+		try {
+			if (value==null){
+				pstm.setNull(poss, Types.INTEGER);
+			} else {
+				pstm.setString(poss,value.getId());
+			}
+		} catch (SQLException e) {
+			throw new DaoManagerException("Query:'"+query+"' Value:'" + value	+ "'", e);
+		}
+	}
+	
 	public static void setInt(PreparedStatement pstm,int poss,int value,String query) throws DaoManagerException {
 		try {
 			pstm.setInt(poss,value);
@@ -744,7 +757,7 @@ public class DataBase implements TestInterface{
 
 	protected static long getLongFromQuery(PreparedStatement pstm, 
 										   String query,
-										   int defaultValue) throws DaoManagerException {
+										   long defaultValue) throws DaoManagerException {
 		long time = 0;
 		if (log.isInfoEnabled()) {
 			time = System.currentTimeMillis();
@@ -833,6 +846,8 @@ public class DataBase implements TestInterface{
 			setFloat(pstm,poss,(Float)value,query);
 		} else if (value instanceof Timestamp){
 			setTimestamp(pstm,poss,(Timestamp)value,query);
+		} else if (value instanceof SQLEnum){
+			setSQLEnum(pstm,poss,(SQLEnum)value,query);
 		} else {
 			throw new IllegalAccessError("Type :"+value.getClass().getName()+" is not suported");
 		}

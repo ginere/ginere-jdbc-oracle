@@ -1,14 +1,21 @@
 package eu.ginere.jdbc.test;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import junit.framework.TestCase;
 
 import org.apache.commons.dbcp.BasicDataSource;
 
-public class AbstractJDBCTest extends TestCase {
+import eu.ginere.base.util.properties.GlobalFileProperties;
+
+public class JDBCTestUtils extends TestCase {
 
 	/**
 	 * @param driverClassName
@@ -65,6 +72,28 @@ public class AbstractJDBCTest extends TestCase {
 		//
 		//
 		// return oracleDataSource;
+	}
+	/**
+	 * @param filePath
+	 * @return
+	 * @throws NamingException
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public static DataSource createDataSourceFromPropertiesFile(String filePath) throws SQLException, 
+		FileNotFoundException,IOException {
+		
+		filePath=GlobalFileProperties.getPropertiesFilePath(filePath);
+		
+		Properties prop = new Properties();
+		prop.load(new FileInputStream(filePath));
+
+		String url = prop.getProperty("jdbc.url");
+		String username = prop.getProperty("jdbc.username");
+		String password = prop.getProperty("jdbc.password");
+        
+		DataSource ret=JDBCTestUtils.createOracleDataSource(url, username, password);
+		return ret;
 	}
 
 }
