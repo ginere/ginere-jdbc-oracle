@@ -318,6 +318,41 @@ public abstract class AbstractDAO implements TestInterface{
 		}	
 	}
 	
+	public long executeUpdate(String query,Object arg1,Object arg2,Object arg3) throws DaoManagerException {
+		Connection connection = getConnection();
+		try {
+			PreparedStatement pstm = getPrepareStatement(connection,query);
+			set(pstm, 1, arg1, query);
+			set(pstm, 2, arg2, query);
+			set(pstm, 3, arg3, query);
+			try {
+				return executeUpdate(pstm, query);
+			}finally{
+				close(pstm);
+			}
+		} finally {
+			closeConnection(connection);
+		}	
+	}
+
+	public long executeUpdate(String query,Object array[]) throws DaoManagerException {
+		Connection connection = getConnection();
+		try {
+			PreparedStatement pstm = getPrepareStatement(connection,query);
+			
+			for (int i=0;i<array.length;i++){
+				set(pstm, i+1, array[i], query);
+			}
+			try {
+				return executeUpdate(pstm, query);
+			}finally{
+				close(pstm);
+			}
+		} finally {
+			closeConnection(connection);
+		}	
+	}
+
 	/**
 	 * Ejecuta una query.
 	 * 
